@@ -45,7 +45,7 @@ def test_rel_phase_antiphase():
     y = np.cos(np.arange(0, 20*np.pi, np.pi/20))
     t_x, t_y, rel_phase = discrete.relative_phase(x, y)
     assert np.all(np.isclose(rel_phase, np.pi/2))
-    assert np.all(t_x - t_y == 10)
+    assert np.all(t_x - t_y == 10) or np.all(t_y - t_x == 30)
 
 
 def test_rel_phase_with_2d_data():
@@ -55,7 +55,7 @@ def test_rel_phase_with_2d_data():
     y = np.array([y, 10*y + 4]).transpose()
     t_x, t_y, rel_phase = discrete.relative_phase(x, y)
     assert np.all(np.isclose(rel_phase, np.pi/2))
-    assert np.all(t_x - t_y == 10)
+    assert np.all(t_x - t_y == 10) or np.all(t_y - t_x == 30)
 
 
 def test_rel_phase_bad_input():
