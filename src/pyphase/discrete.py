@@ -7,6 +7,8 @@ import numpy as np
 from scipy import signal
 from sklearn.decomposition import PCA
 
+from pyphase import wrap
+
 
 def relative_phase(a, b=None, t=None):
     """Calculate discrete relative phase between two signals.
@@ -72,7 +74,7 @@ def relative_phase(a, b=None, t=None):
 
     rel_phase = 2 * np.pi * (peaks[0] - peaks[1]) / periods
 
-    return t[peaks[0]], t[peaks[1]], rel_phase
+    return t[peaks[0]], t[peaks[1]], wrap(rel_phase)
 
 
 def ampd_peaks(data):
